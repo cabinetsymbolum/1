@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos services — Cabinet Symbolum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E6D6C4; --blue:#001C5D; --black:#000000; --white:#FFFFFF;
+    --radius:14px; --radius-lg:22px;
+    --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans:'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    --max:1180px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --bg:#E6D6C4; --blue:#001C5D; --black:#000000; --white:#FFFFFF; }
+  }
+  :root[data-theme="dark"]{ --bg:#E6D6C4; --blue:#001C5D; --black:#000000; --white:#FFFFFF; }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--black); font-family:var(--sans); line-height:1.6; -webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 6vw;}
+
+  /* Logo */
+  .logo{display:inline-flex; align-items:center; gap:1rem; text-decoration:none;}
+  .logo-symbol{font-family:var(--serif); font-style:italic; font-weight:600; color:var(--blue); font-size:1.7rem; line-height:1; display:inline-block;}
+  .logo-text{font-family:var(--serif); font-weight:500; color:var(--blue); font-size:0.82rem; letter-spacing:0.28em; text-transform:uppercase;}
+
+  /* Header */
+  header{position:sticky; top:0; z-index:500; background:rgba(230,214,196,0.92); backdrop-filter:blur(6px); border-bottom:1px solid rgba(0,28,93,0.12);}
+  header .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:1.1rem; padding-bottom:1.1rem;}
+  .home-btn{
+    display:flex; align-items:center; justify-content:center;
+    width:40px; height:40px; border-radius:var(--radius);
+    background:var(--blue); text-decoration:none; flex-shrink:0;
+  }
+  .home-btn svg{width:19px; height:19px;}
+  .home-btn:hover{opacity:0.88;}
+
+  section{padding:5.5rem 0;}
+  .eyebrow{font-family:var(--serif); font-size:0.85rem; letter-spacing:0.32em; text-transform:uppercase; margin:0 0 1.1rem 0;}
+  h1,h2,h3{font-family:var(--serif); font-weight:500; margin:0;}
+  p{margin:0;}
+
+  /* Intro */
+  #sv-intro{background:var(--blue); color:var(--white);}
+  #sv-intro .eyebrow{color:#AEB9D9;}
+  #sv-intro h1{font-size:clamp(2rem, 4.6vw, 3rem); max-width:20ch; margin-bottom:1.2rem;}
+  #sv-intro p{max-width:60ch; color:#DCE1EF; font-weight:300; font-size:1.02rem;}
+
+  /* Liste des services (défilement de petites sections) */
+  #sv-list{background:var(--bg); padding-top:3.5rem;}
+  .sv-row{
+    display:grid; grid-template-columns:1fr 2fr; gap:2.2rem;
+    padding:1.8rem 0; border-top:1px solid rgba(0,28,93,0.3);
+  }
+  #sv-list .sv-row:last-child{border-bottom:1px solid rgba(0,28,93,0.3);}
+  .sv-row h3{font-size:1.25rem; color:var(--blue);}
+  .sv-row p{font-size:0.95rem; color:#1a1a1a; max-width:52ch;}
+
+  /* Contact */
+  #sv-contact{background:var(--bg); padding-top:0;}
+  .contact-box{
+    border:1.5px solid var(--blue); border-radius:var(--radius-lg);
+    padding:2.4rem 2.6rem; text-align:center; max-width:720px; margin:0 auto;
+  }
+  .contact-box p.lead{font-family:var(--serif); font-style:italic; color:var(--blue); font-size:1.3rem; margin-bottom:1rem;}
+  .contact-box a.email-link{
+    display:inline-block; margin-top:0.8rem; font-family:var(--sans); font-weight:600;
+    background:var(--blue); color:var(--white); text-decoration:none;
+    border-radius:var(--radius); padding:0.85rem 1.6rem; font-size:0.95rem;
+  }
+
+  /* Footer */
+  footer{background:var(--blue); color:var(--white); padding:3.5rem 0 2.2rem;}
+  footer .logo-symbol, footer .logo-text{color:var(--white);}
+  footer .foot-tagline{font-size:0.95rem; color:#C7D0E8; margin-top:0.5rem;}
+  footer nav{margin-top:2rem; display:flex; flex-wrap:wrap; gap:0.5rem 0.9rem; font-size:0.88rem;}
+  footer nav a{text-decoration:none; color:#DCE1EF;}
+  footer nav a:hover{color:var(--white);}
+  footer nav span.sep{color:#5A6994;}
+  .legal-row{margin-top:2.4rem; padding-top:1.6rem; border-top:1px solid rgba(255,255,255,0.15); display:flex; flex-wrap:wrap; gap:0.5rem 0.9rem; font-size:0.78rem; color:#93A0C8;}
+  .legal-row a{text-decoration:none; color:#93A0C8;}
+  .legal-row a:hover{color:var(--white);}
+  .legal-row span.sep{color:#4A578A;}
+
+  /* ===== Téléphone / Ordinateur ===== */
+  @media (max-width:767px){
+    .wrap{padding:0 5.5vw;}
+    section{padding:3.8rem 0;}
+    .sv-row{grid-template-columns:1fr; gap:0.6rem;}
+    .contact-box{padding:2rem 1.4rem;}
+  }
+  @media (min-width:768px){
+    .wrap{padding:0 4vw;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <span class="logo-symbol">∫</span>
+      <span class="logo-text">Cabinet Symbolum</span>
+    </a>
+    <a href="index.html" class="home-btn" aria-label="Retour à l'accueil">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 11L12 3L21 11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5.5 9.5V20C5.5 20.5523 5.94772 21 6.5 21H9.5C10.0523 21 10.5 20.5523 10.5 20V15C10.5 14.4477 10.9477 14 11.5 14H12.5C13.0523 14 13.5 14.4477 13.5 15V20C13.5 20.5523 13.9477 21 14.5 21H17.5C18.0523 21 18.5 20.5523 18.5 20V9.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <section id="sv-intro">
+    <div class="wrap">
+      <p class="eyebrow">Cabinet Symbolum</p>
+      <h1>Nos services</h1>
+      <p>Du diagnostic symbolique à l'exécution, le Cabinet Symbolum accompagne ses clients à chaque étape de la construction, du repositionnement ou de la transmission de leur position symbolique.</p>
+    </div>
+  </section>
+
+  <section id="sv-list">
+    <div class="wrap">
+
+      <div class="sv-row">
+        <h3>Diagnostic et évaluation de l'image de l'entité</h3>
+        <p>Nous analysons la position symbolique actuelle de l'entité : ce qu'elle signifie réellement pour son public, au-delà de ce qu'elle croit signifier.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Positionnement symbolique de nouvelle entité</h3>
+        <p>Nous construisons, dès l'origine, la position symbolique d'une entité qui n'existe pas encore.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Repositionnement symbolique de l'entité</h3>
+        <p>Nous redéfinissons la position symbolique d'une entité dont l'identité ne correspond plus à ce qu'elle veut signifier.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Expansion symbolique</h3>
+        <p>Nous élargissons le champ symbolique d'une entité vers de nouveaux publics, marchés ou significations.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Conception d'offre marketing</h3>
+        <p>Nous concevons des offres pensées comme des réponses à un fantasme précis, plutôt que comme de simples produits.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Promotion marketing</h3>
+        <p>Nous mettons en œuvre les moyens qui rendent une offre visible et désirable.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Stratégie de communication et plan de communication</h3>
+        <p>Nous élaborons l'architecture de choix qui définit une stratégie, et le plan qui la rend réalisable.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Conception de campagne de communication</h3>
+        <p>Nous concevons les campagnes qui matérialisent la stratégie retenue.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Conseils et accompagnements stratégiques</h3>
+        <p>Nous accompagnons nos clients dans leurs décisions stratégiques dans la durée.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Supervision continuelle de l'exécution communicationnelle</h3>
+        <p>Nous supervisons la mise en œuvre de la stratégie pour en garantir la cohérence dans le temps.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Conception de communication audiovisuelle</h3>
+        <p>Nous concevons les productions audiovisuelles porteuses de l'identité symbolique du client.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Conseils d'exécution</h3>
+        <p>Nous conseillons nos clients dans l'exécution concrète de leurs projets de communication.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Formation des cadres de nos clients</h3>
+        <p>Nous formons les cadres de nos clients à la lecture et à la construction symbolique de leur communication.</p>
+      </div>
+
+      <div class="sv-row">
+        <h3>Formation grand public sur les applications de notre approche lacanienne en communication</h3>
+        <p>Nous formons un public plus large aux applications concrètes de notre approche lacanienne en communication.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="sv-contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <p class="lead">Une question sur nos services ?</p>
+        <p>Contactez-nous pour un premier échange gratuit sur votre situation symbolique.</p>
+        <a class="email-link" href="mailto:cabinetsymbolum@gmail.com">cabinetsymbolum@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <span class="logo-symbol">∫</span>
+      <span class="logo-text">Cabinet Symbolum</span>
+    </a>
+    <p class="foot-tagline">Expert en communication symbolique.</p>
+    <nav>
+      <a href="services.html">Nos services</a><span class="sep">·</span>
+      <a href="identite.html">Notre identité</a><span class="sep">·</span>
+      <a href="methodologie.html">Notre méthodologie</a><span class="sep">·</span>
+      <a href="revue.html">Revue Symbolum</a><span class="sep">·</span>
+      <a href="etudes-de-cas.html">Études de cas</a><span class="sep">·</span>
+      <a href="exposition-fantasmes.html">Exposition</a><span class="sep">·</span>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="legal-row">
+      <a href="mentions-legales.html">Mentions légales</a><span class="sep">·</span>
+      <a href="politique-confidentialite.html">Politique de confidentialité</a><span class="sep">·</span>
+      <a href="politiques-institutionnelles.html">Politiques institutionnelles</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
