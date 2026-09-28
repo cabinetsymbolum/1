@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabinet Symbolum — Faites-vous désirer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E6D6C4;
+    --blue:#001C5D;
+    --black:#000000;
+    --white:#FFFFFF;
+    --radius:14px;
+    --radius-lg:22px;
+    --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans:'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    --max:1180px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#E6D6C4; --blue:#001C5D; --black:#000000; --white:#FFFFFF;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#E6D6C4; --blue:#001C5D; --black:#000000; --white:#FFFFFF;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--black);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 6vw;}
+
+  /* ---------- Logo ---------- */
+  .logo{display:inline-flex; align-items:center; gap:1rem; text-decoration:none;}
+  .logo-symbol{
+    font-family:var(--serif); font-style:italic; font-weight:600;
+    color:var(--blue); font-size:1.7rem; line-height:1; display:inline-block;
+  }
+  .logo-text{
+    font-family:var(--serif); font-weight:500; color:var(--blue);
+    font-size:0.82rem; letter-spacing:0.28em; text-transform:uppercase;
+  }
+
+  /* ---------- Intro overlay ---------- */
+  #intro-overlay{
+    position:fixed; inset:0; z-index:9999;
+    background:var(--bg);
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
+    transition:opacity 0.9s ease;
+  }
+  #intro-overlay .logo-symbol{font-size:4.6rem;}
+  #intro-overlay .logo-text{font-size:1.05rem;}
+  #intro-overlay .intro-mark{
+    display:flex; flex-direction:column; align-items:center; gap:1.4rem;
+    animation:blurIn 2.1s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  @keyframes blurIn{
+    from{filter:blur(16px); opacity:0; transform:scale(0.97);}
+    to{filter:blur(0); opacity:1; transform:scale(1);}
+  }
+  #intro-overlay.hide{opacity:0; pointer-events:none;}
+  @media (prefers-reduced-motion: reduce){
+    #intro-overlay .intro-mark{animation:none; filter:none; opacity:1;}
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:500;
+    background:rgba(230,214,196,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(0,28,93,0.12);
+  }
+  header .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:1.1rem; padding-bottom:1.1rem;
+  }
+  .header-right{display:flex; align-items:center; gap:2rem;}
+
+  .menu-btn{
+    position:relative; z-index:700;
+    background:none; border:none; cursor:pointer; padding:0.4rem;
+    display:flex; flex-direction:column; gap:5px; width:30px;
+  }
+  .menu-btn span{display:block; height:2px; width:100%; background:var(--blue); border-radius:2px; transition:transform .3s ease, opacity .3s ease;}
+  .menu-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-btn.open span:nth-child(2){opacity:0;}
+  .menu-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  #nav-panel{
+    position:fixed; inset:0; z-index:600;
+    background:var(--blue); color:var(--white);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transition:opacity .4s ease;
+  }
+  #nav-panel.open{opacity:1; pointer-events:auto;}
+  #nav-close{
+    position:absolute; top:1.4rem; right:6vw;
+    background:none; border:none; color:var(--white); font-size:1.9rem;
+    line-height:1; cursor:pointer; padding:0.4rem;
+  }
+  #nav-panel nav{display:flex; flex-direction:column; gap:1.6rem; text-align:center;}
+  #nav-panel a{
+    font-family:var(--serif); font-size:2rem; text-decoration:none; color:var(--white);
+    letter-spacing:0.02em;
+  }
+  #nav-panel a:hover{color:#c9d2ea;}
+
+  /* ---------- Sections generic ---------- */
+  section{padding:6.5rem 0;}
+  .eyebrow{
+    font-family:var(--serif); font-size:0.85rem; letter-spacing:0.32em;
+    text-transform:uppercase; margin:0 0 1.1rem 0;
+  }
+  h1,h2,h3{font-family:var(--serif); font-weight:500; margin:0;}
+  p{margin:0;}
+
+  /* ---------- Intro section ---------- */
+  #intro{background:var(--blue); color:var(--white);}
+  #intro .eyebrow{color:#AEB9D9;}
+  #intro h1{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    line-height:1.15;
+    max-width:16ch;
+    margin-bottom:2rem;
+  }
+  #intro p{
+    max-width:60ch;
+    font-size:1.05rem;
+    color:#DCE1EF;
+    font-weight:300;
+  }
+
+  /* ---------- Piliers ---------- */
+  #piliers{background:var(--bg);}
+  #piliers .eyebrow{color:var(--blue);}
+  #piliers > .wrap > h2{
+    font-size:clamp(1.7rem, 3.4vw, 2.3rem);
+    color:var(--blue);
+    max-width:22ch;
+    margin-bottom:3.2rem;
+  }
+  .pilier{
+    display:grid; grid-template-columns: 1fr 2fr; gap:2.5rem;
+    padding:2.4rem 0;
+    border-top:1px solid rgba(0,28,93,0.35);
+  }
+  .pilier:last-child{border-bottom:1px solid rgba(0,28,93,0.35);}
+  .pilier h3{font-size:1.5rem; color:var(--blue);}
+  .pilier p{font-size:0.98rem; max-width:52ch; color:#1a1a1a;}
+
+  /* ---------- Aller plus loin ---------- */
+  #plus-loin{background:var(--bg); padding-top:0;}
+  #plus-loin .eyebrow{color:var(--blue);}
+  .cards{display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; margin-top:2rem;}
+  .card{
+    display:block; text-decoration:none;
+    background:var(--white);
+    border:1px solid rgba(0,28,93,0.18);
+    border-radius:var(--radius-lg);
+    padding:2.2rem;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .card:hover{border-color:var(--blue); transform:translateY(-3px);}
+  .card h3{color:var(--blue); font-size:1.4rem; margin-bottom:0.7rem;}
+  .card p{color:#333; font-size:0.95rem;}
+  .card .go{
+    display:inline-block; margin-top:1.1rem; font-family:var(--serif);
+    font-style:italic; color:var(--blue); font-size:0.95rem;
+  }
+
+  /* ---------- Promesse ---------- */
+  #promesse{background:var(--bg); text-align:left;}
+  #promesse .frame{
+    border:1.5px solid var(--blue);
+    border-radius:var(--radius-lg);
+    padding:3rem 3.2rem;
+    background:rgba(255,255,255,0.35);
+  }
+  #promesse h2{
+    font-family:var(--serif); font-style:italic; color:var(--blue);
+    font-size:clamp(2rem, 4.4vw, 3rem); margin-bottom:1.8rem;
+  }
+  #promesse p{font-size:1.1rem; max-width:58ch; color:#161616;}
+  #promesse em{
+    font-style:italic; color:var(--blue); font-family:var(--serif); font-size:1.15em;
+  }
+  @media (max-width:640px){
+    #promesse .frame{padding:2rem 1.4rem;}
+  }
+
+  /* ---------- Banner Revue ---------- */
+  #revue{background:var(--blue); color:var(--white);}
+  #revue .wrap{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.5rem;
+  }
+  #revue .eyebrow{color:#AEB9D9; margin-bottom:0.6rem;}
+  #revue h2{font-size:clamp(1.5rem, 3vw, 2.1rem); max-width:20ch;}
+  #revue .go-link{
+    font-family:var(--serif); font-style:italic; font-size:1.15rem;
+    color:var(--white); text-decoration:none; white-space:nowrap;
+    border-bottom:1px solid rgba(255,255,255,0.5); padding-bottom:0.2rem;
+  }
+  #revue .go-link:hover{border-color:var(--white);}
+
+  /* ---------- Contact ---------- */
+  #contact{background:var(--bg);}
+  #contact .eyebrow{color:var(--blue);}
+  #contact h2{font-size:clamp(1.6rem,3.2vw,2.2rem); color:var(--blue); max-width:22ch; margin-bottom:1rem;}
+  #contact > .wrap > p{max-width:56ch; color:#222; margin-bottom:0.4rem;}
+  #contact .email-link{color:var(--blue); font-weight:500; text-decoration:underline;}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.8rem;}
+
+  form{display:flex; flex-direction:column; gap:1.1rem;}
+  label{font-size:0.82rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); font-weight:500;}
+  input, textarea{
+    font-family:var(--sans); font-size:1rem; padding:0.85rem 1rem;
+    border:1px solid rgba(0,28,93,0.3); border-radius:var(--radius);
+    background:var(--white); color:var(--black); resize:vertical;
+  }
+  input:focus, textarea:focus{outline:2px solid var(--blue); outline-offset:1px;}
+  textarea{min-height:130px;}
+  button[type="submit"]{
+    font-family:var(--sans); font-weight:600; font-size:0.95rem; letter-spacing:0.04em;
+    background:var(--blue); color:var(--white); border:none; border-radius:var(--radius);
+    padding:0.95rem 1.6rem; cursor:pointer; transition:opacity .2s ease; align-self:flex-start;
+  }
+  button[type="submit"]:hover{opacity:0.88;}
+  button[type="submit"]:disabled{opacity:0.5; cursor:not-allowed;}
+  #form-status{font-size:0.9rem; margin-top:0.3rem;}
+  #form-status.ok{color:#1a5d2e;}
+  #form-status.err{color:#7a1f1f;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--blue); color:var(--white); padding:3.5rem 0 2.2rem;}
+  footer .logo-symbol, footer .logo-text{color:var(--white);}
+  footer .foot-tagline{font-size:0.95rem; color:#C7D0E8; margin-top:0.5rem;}
+  footer nav{margin-top:2rem; display:flex; flex-wrap:wrap; gap:0.5rem 0.9rem; font-size:0.88rem;}
+  footer nav a{text-decoration:none; color:#DCE1EF;}
+  footer nav a:hover{color:var(--white);}
+  footer nav span.sep{color:#5A6994;}
+  .legal-row{
+    margin-top:2.4rem; padding-top:1.6rem; border-top:1px solid rgba(255,255,255,0.15);
+    display:flex; flex-wrap:wrap; gap:0.5rem 0.9rem; font-size:0.78rem; color:#93A0C8;
+  }
+  .legal-row a{text-decoration:none; color:#93A0C8;}
+  .legal-row a:hover{color:var(--white);}
+  .legal-row span.sep{color:#4A578A;}
+
+  /* ================= TÉLÉPHONE (max-width: 767px) ================= */
+  @media (max-width:767px){
+    .wrap{padding:0 5.5vw;}
+    section{padding:4rem 0;}
+    .pilier{grid-template-columns:1fr; gap:0.8rem;}
+    .cards{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    #revue .wrap{flex-direction:column; align-items:flex-start;}
+    #promesse .frame{padding:2rem 1.4rem;}
+    #nav-panel a{font-size:1.6rem;}
+    #nav-close{top:1.1rem; right:5.5vw; font-size:1.6rem;}
+  }
+
+  /* ================= ORDINATEUR (min-width: 768px) ================= */
+  @media (min-width:768px){
+    .wrap{padding:0 4vw;}
+    section{padding:7.5rem 0;}
+    .pilier{grid-template-columns: 1fr 2fr; gap:2.5rem;}
+    .cards{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div id="intro-overlay" aria-hidden="true">
+  <div class="intro-mark">
+    <span class="logo-symbol" style="font-size:4.6rem;">∫</span>
+    <span class="logo-text">Cabinet Symbolum</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <a href="#top" class="logo">
+      <span class="logo-symbol">∫</span>
+      <span class="logo-text">Cabinet Symbolum</span>
+    </a>
+    <div class="header-right">
+      <button class="menu-btn" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-panel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="nav-panel">
+  <button id="nav-close" aria-label="Fermer le menu">✕</button>
+  <nav>
+    <a href="services.html">Nos services</a>
+        <a href="exposition-fantasmes.html">Exposition d'offres</a>
+    <a href="identite.html">Notre identité</a>
+    <a href="methodologie.html">Notre méthodologie</a>
+    <a href="revue.html">Revue Symbolum</a>
+    <a href="etudes-de-cas.html">Étude de cas</a>
+    <a href="#contact" id="nav-contact-link">Contact</a>
+  </nav>
+</div>
+
+<main id="top">
+
+  <section id="intro">
+    <div class="wrap">
+      <p class="eyebrow">Cabinet Symbolum</p>
+      <h1>Cabinet d'expertise en communication symbolique et de marketing du désir</h1>
+      <p>Contrairement aux autres services de communication généralistes, Symbolum priorise la dimension symbolique de l'identité de nos clients et un marketing axé sur le désir.</p>
+    </div>
+  </section>
+
+  <section id="piliers">
+    <div class="wrap">
+      <p class="eyebrow">Les 5 piliers de notre approche</p>
+      <h2>Une méthode qui relie diagnostic, positionnement, conception/promotion d'offre marketing, stratégie et exécution.</h2>
+
+      <div class="pilier">
+        <h3>Diagnostic symbolique</h3>
+        <p>Notre diagnostic permet de savoir ce que notre client signifie réellement pour son public, par-delà ce qu'il croit signifier.</p>
+      </div>
+      <div class="pilier">
+        <h3>Positionnement symbolique</h3>
+        <p>Notre travail de positionnement permet de construire, de reconstruire ou d'élargir l'identité symbolique de notre client à travers une architecture signifiante rigoureuse et pertinente.</p>
+      </div>
+            <div class="pilier">
+        <h3>Conception/promotion d'offre marketing</h3>
+        <p>Notre travail en marketing consiste à dépasser la recherche des besoins sur le marché pour comprendre les désirs et fantasmes sociaux afin d'y répondre avec des offres originales et pertinentes.</p>
+      </div>
+      <div class="pilier">
+        <h3>Stratégie de communication</h3>
+        <p>Nous construisons des stratégies efficaces pour matérialiser l'identité symbolique que notre client désire.</p>
+      </div>
+      <div class="pilier">
+        <h3>Supervision et exécution de plans</h3>
+        <p>Nous construisons des plans de communication suivant une stratégie, et notre client décide si nous les exécutons et/ou si nous les supervisons.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="plus-loin">
+    <div class="wrap">
+      <p class="eyebrow">Aller plus loin</p>
+      <div class="cards">
+        <a class="card" href="methodologie.html">
+          <h3>Notre méthodologie</h3>
+          <p>Découvrez les principes et les étapes qui structurent l'approche Symbolum.</p>
+          <span class="go">Découvrir →</span>
+        </a>
+        <a class="card" href="etudes-de-cas.html">
+          <h3>Nos études de cas</h3>
+          <p>Observez l'application de notre approche à des situations concrètes.</p>
+          <span class="go">Découvrir →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="promesse">
+    <div class="wrap">
+      <div class="frame">
+        <h2>Faites-vous désirer.</h2>
+        <p>Que vous soyez une institution, une organisation, une entreprise ou une personnalité publique, avec le Cabinet Symbolum, vous vous construisez <em>l'aura</em> que vous souhaitez.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="revue">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Revue Symbolum</p>
+        <h2>La revue scientifique de notre approche</h2>
+      </div>
+      <a class="go-link" href="revue.html">Accéder →</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Une première prise de contact, gratuite.</h2>
+      <p>Contactez-nous par email : <a class="email-link" href="mailto:cabinetsymbolum@gmail.com">cabinetsymbolum@gmail.com</a></p>
+
+      <div class="contact-grid">
+        <form id="contact-form">
+          <div>
+            <label for="cf-name">Nom</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name">
+          </div>
+          <div>
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email">
+          </div>
+          <div>
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" required></textarea>
+          </div>
+          <button type="submit" id="cf-submit">Envoyer</button>
+          <p id="form-status" role="status"></p>
+        </form>
+        <div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo">
+      <span class="logo-symbol">∫</span>
+      <span class="logo-text">Cabinet Symbolum</span>
+    </a>
+    <p class="foot-tagline">Expert en communication symbolique.</p>
+    <nav>
+      <a href="services.html">Nos services</a><span class="sep">·</span>
+      <a href="identite.html">Notre identité</a><span class="sep">·</span>
+      <a href="methodologie.html">Notre méthodologie</a><span class="sep">·</span>
+      <a href="revue.html">Revue Symbolum</a><span class="sep">·</span>
+      <a href="etudes-de-cas.html">Études de cas</a><span class="sep">·</span>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="legal-row">
+      <a href="mentions-legales.html">Mentions légales</a><span class="sep">·</span>
+      <a href="politique-confidentialite.html">Politique de confidentialité</a><span class="sep">·</span>
+      <a href="politiques-institutionnelles.html">Politiques institutionnelles</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Intro overlay ----
+  (function(){
+    var overlay = document.getElementById('intro-overlay');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.style.overflow = 'hidden';
+    var total = reduced ? 0 : 2600;
+    setTimeout(function(){
+      overlay.classList.add('hide');
+      document.documentElement.style.overflow = '';
+      setTimeout(function(){ overlay.style.display = 'none'; }, reduced ? 0 : 900);
+    }, total);
+  })();
+
+  // ---- Menu ----
+  (function(){
+    var btn = document.getElementById('menu-btn');
+    var panel = document.getElementById('nav-panel');
+    var closeBtn = document.getElementById('nav-close');
+    function closeMenu(){
+      panel.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    }
+    btn.addEventListener('click', function(){
+      var isOpen = panel.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    closeBtn.addEventListener('click', closeMenu);
+    panel.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeMenu);
+    });
+  })();
+
+  // ---- Contact form ----
+  (function(){
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('form-status');
+    var submitBtn = document.getElementById('cf-submit');
+    var db = null;
+
+    if (window.claude && typeof window.claude.use === 'function') {
+      window.claude.use('db').then(function(res){ db = res; }).catch(function(){ db = null; });
+    }
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      var name = document.getElementById('cf-name').value.trim();
+      var email = document.getElementById('cf-email').value.trim();
+      var message = document.getElementById('cf-message').value.trim();
+      if(!name || !email || !message){ return; }
+
+      submitBtn.disabled = true;
+      status.textContent = 'Envoi en cours…';
+      status.className = '';
+
+      try{
+        if(db){
+          await db.collection('contacts').doc(String(Date.now())).set({
+            name: name, email: email, message: message, createdAt: Date.now()
+          });
+          status.textContent = 'Merci, votre message a bien été envoyé.';
+          status.className = 'ok';
+          form.reset();
+        } else {
+          window.location.href = 'mailto:cabinetsymbolum@gmail.com?subject=' +
+            encodeURIComponent('Prise de contact — ' + name) +
+            '&body=' + encodeURIComponent(message + '\n\n' + email);
+          status.textContent = 'Ouverture de votre messagerie…';
+          status.className = 'ok';
+        }
+      }catch(err){
+        status.textContent = "Une erreur est survenue. Merci d'écrire directement à cabinetsymbolum@gmail.com.";
+        status.className = 'err';
+      }finally{
+        submitBtn.disabled = false;
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
