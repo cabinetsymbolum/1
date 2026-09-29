@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exposition — Fantasmes, Polymorphie de l'offre et Créativité — Cabinet Symbolum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E6D6C4; --blue:#001C5D; --black:#000000; --white:#FFFFFF;
+    --radius:14px; --radius-lg:22px;
+    --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans:'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    --max:1180px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --bg:#E6D6C4; --blue:#001C5D; --black:#000000; --white:#FFFFFF; }
+  }
+  :root[data-theme="dark"]{ --bg:#E6D6C4; --blue:#001C5D; --black:#000000; --white:#FFFFFF; }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--black); font-family:var(--sans); line-height:1.6; -webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 6vw;}
+
+  /* Logo */
+  .logo{display:inline-flex; align-items:center; gap:1rem; text-decoration:none;}
+  .logo-symbol{font-family:var(--serif); font-style:italic; font-weight:600; color:var(--blue); font-size:1.7rem; line-height:1; display:inline-block;}
+  .logo-text{font-family:var(--serif); font-weight:500; color:var(--blue); font-size:0.82rem; letter-spacing:0.28em; text-transform:uppercase;}
+
+  /* Header */
+  header{position:sticky; top:0; z-index:500; background:rgba(230,214,196,0.92); backdrop-filter:blur(6px); border-bottom:1px solid rgba(0,28,93,0.12);}
+  header .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:1.1rem; padding-bottom:1.1rem;}
+  .menu-btn{position:relative; z-index:700; background:none; border:none; cursor:pointer; padding:0.4rem; display:flex; flex-direction:column; gap:5px; width:30px;}
+  .menu-btn span{display:block; height:2px; width:100%; background:var(--blue); border-radius:2px; transition:transform .3s ease, opacity .3s ease;}
+  .menu-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-btn.open span:nth-child(2){opacity:0;}
+  .menu-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  #nav-panel{position:fixed; inset:0; z-index:600; background:var(--blue); color:var(--white); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .4s ease;}
+  #nav-panel.open{opacity:1; pointer-events:auto;}
+  #nav-close{position:absolute; top:1.4rem; right:6vw; background:none; border:none; color:var(--white); font-size:1.9rem; line-height:1; cursor:pointer; padding:0.4rem;}
+  #nav-panel nav{display:flex; flex-direction:column; gap:1.6rem; text-align:center;}
+  #nav-panel a{font-family:var(--serif); font-size:2rem; text-decoration:none; color:var(--white); letter-spacing:0.02em;}
+  #nav-panel a:hover{color:#c9d2ea;}
+
+  section{padding:5.5rem 0;}
+  .eyebrow{font-family:var(--serif); font-size:0.85rem; letter-spacing:0.32em; text-transform:uppercase; margin:0 0 1.1rem 0;}
+  h1,h2,h3{font-family:var(--serif); font-weight:500; margin:0;}
+  p{margin:0;}
+
+  /* Intro (initiative du cabinet) */
+  #expo-intro{background:var(--blue); color:var(--white);}
+  #expo-intro .eyebrow{color:#AEB9D9;}
+  #expo-intro h1{font-size:clamp(2rem, 4.6vw, 3rem); max-width:20ch; margin-bottom:1.4rem;}
+  #expo-intro p{max-width:62ch; color:#DCE1EF; font-weight:300; font-size:1.02rem;}
+  #expo-intro p + p{margin-top:1.1rem;}
+
+  /* Présentation de l'exposition */
+  #expo-presentation{background:var(--bg);}
+  #expo-presentation .eyebrow{color:var(--blue);}
+  #expo-presentation h2{font-size:clamp(1.9rem, 4vw, 2.6rem); color:var(--blue); font-style:italic; max-width:22ch; margin-bottom:1.4rem;}
+  #expo-presentation p{max-width:64ch; font-size:1.02rem; color:#1a1a1a;}
+  #expo-presentation p + p{margin-top:1.1rem;}
+  .theme-tags{display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:1.8rem;}
+  .theme-tag{
+    font-family:var(--serif); font-style:italic; font-size:0.95rem; color:var(--blue);
+    border:1px solid rgba(0,28,93,0.4); border-radius:20px; padding:0.4rem 1.1rem;
+  }
+
+  /* Grille des cartes */
+  #expo-cards{background:var(--bg); padding-top:0;}
+  .cards-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:1.8rem; margin-top:2.5rem;
+  }
+  .offer-card{
+    background:var(--white); border:1px solid rgba(0,28,93,0.16);
+    border-radius:var(--radius-lg); overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .card-media{position:relative; aspect-ratio:16/9; background:#d9c9b2;}
+  .card-media img{width:100%; height:100%; object-fit:cover;}
+  .media-fallback{
+    display:none; position:absolute; inset:0; align-items:center; justify-content:center;
+    text-align:center; padding:1rem; color:var(--blue); font-family:var(--serif);
+    font-style:italic; font-size:0.9rem; background:#d9c9b2;
+  }
+  .offer-body{padding:1.5rem 1.6rem 1.8rem;}
+  .offer-number{
+    font-family:var(--serif); font-style:italic; font-size:0.85rem; color:var(--blue);
+    margin-bottom:0.4rem; display:block;
+  }
+  .offer-body h3{font-size:1.25rem; color:var(--blue); margin-bottom:0.6rem;}
+  .offer-body p{font-size:0.94rem; color:#292929;}
+
+  /* Contact micro-section */
+  #expo-contact{background:var(--bg); padding-top:0;}
+  .contact-box{
+    border:1.5px solid var(--blue); border-radius:var(--radius-lg);
+    padding:2.4rem 2.6rem; text-align:center; max-width:720px; margin:0 auto;
+  }
+  .contact-box p.lead{font-family:var(--serif); font-style:italic; color:var(--blue); font-size:1.3rem; margin-bottom:1rem;}
+  .contact-box a.email-link{
+    display:inline-block; margin-top:0.8rem; font-family:var(--sans); font-weight:600;
+    background:var(--blue); color:var(--white); text-decoration:none;
+    border-radius:var(--radius); padding:0.85rem 1.6rem; font-size:0.95rem;
+  }
+
+  /* Services autour de l'initiative */
+  #expo-services{background:var(--blue); color:var(--white);}
+  #expo-services .eyebrow{color:#AEB9D9;}
+  #expo-services > .wrap > h2{font-size:clamp(1.7rem, 3.4vw, 2.3rem); max-width:24ch; margin-bottom:3rem;}
+  .service-row{
+    display:grid; grid-template-columns:1fr 2fr; gap:2.5rem;
+    padding:2.2rem 0; border-top:1px solid rgba(255,255,255,0.25);
+  }
+  .service-row:last-child{border-bottom:1px solid rgba(255,255,255,0.25);}
+  .service-row h3{font-size:1.4rem; color:var(--white);}
+  .service-row p{font-size:0.98rem; max-width:56ch; color:#DCE1EF;}
+
+  /* Footer */
+  footer{background:var(--blue); color:var(--white); padding:3.5rem 0 2.2rem;}
+  footer .logo-symbol, footer .logo-text{color:var(--white);}
+  footer .foot-tagline{font-size:0.95rem; color:#C7D0E8; margin-top:0.5rem;}
+  footer nav{margin-top:2rem; display:flex; flex-wrap:wrap; gap:0.5rem 0.9rem; font-size:0.88rem;}
+  footer nav a{text-decoration:none; color:#DCE1EF;}
+  footer nav a:hover{color:var(--white);}
+  footer nav span.sep{color:#5A6994;}
+  .legal-row{margin-top:2.4rem; padding-top:1.6rem; border-top:1px solid rgba(255,255,255,0.15); display:flex; flex-wrap:wrap; gap:0.5rem 0.9rem; font-size:0.78rem; color:#93A0C8;}
+  .legal-row a{text-decoration:none; color:#93A0C8;}
+  .legal-row a:hover{color:var(--white);}
+  .legal-row span.sep{color:#4A578A;}
+
+  /* ===== Téléphone / Ordinateur ===== */
+  @media (max-width:767px){
+    .wrap{padding:0 5.5vw;}
+    section{padding:3.8rem 0;}
+    .cards-grid{grid-template-columns:1fr;}
+    .service-row{grid-template-columns:1fr; gap:0.8rem;}
+    .contact-box{padding:2rem 1.4rem;}
+    #nav-panel a{font-size:1.6rem;}
+    #nav-close{top:1.1rem; right:5.5vw; font-size:1.6rem;}
+  }
+  @media (min-width:768px){
+    .wrap{padding:0 4vw;}
+  }
+  @media (min-width:1000px){
+    .cards-grid{grid-template-columns:repeat(3, 1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <span class="logo-symbol">∫</span>
+      <span class="logo-text">Cabinet Symbolum</span>
+    </a>
+    <button class="menu-btn" id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-panel">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div id="nav-panel">
+  <button id="nav-close" aria-label="Fermer le menu">✕</button>
+  <nav>
+    <a href="services.html">Nos services</a>
+    <a href="identite.html">Notre identité</a>
+    <a href="methodologie.html">Notre méthodologie</a>
+    <a href="revue.html">Revue Symbolum</a>
+    <a href="etudes-de-cas.html">Étude de cas</a>
+    <a href="exposition-fantasmes.html">Exposition</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</div>
+
+<main>
+
+  <section id="expo-intro">
+    <div class="wrap">
+      <p class="eyebrow">Une initiative du Cabinet Symbolum</p>
+      <h1>Exposer des offres comme on expose des œuvres</h1>
+      <p>Le Cabinet Symbolum ne se contente pas de théoriser la dimension symbolique des offres commerciales : il la donne à voir. Cette exposition est une démonstration concrète de notre méthode de conception marketing — la manière dont nous lisons, construisons et faisons signifier une offre au-delà de sa seule fonction utilitaire.</p>
+      <p>Chaque pièce présentée ici a été pensée comme une œuvre l'est par un artiste : à partir d'un fantasme à activer, d'une forme à trouver, et d'une créativité mise au service d'une signification précise.</p>
+    </div>
+  </section>
+
+  <section id="expo-presentation">
+    <div class="wrap">
+      <p class="eyebrow">Exposition</p>
+      <h2>Fantasmes, Polymorphie de l'offre et Créativité</h2>
+      <p>Une offre n'est jamais seulement un produit ou un service : elle est la mise en forme d'un fantasme — ce que le public désire sans toujours pouvoir le nommer. Cette exposition explore trois dimensions que le Cabinet Symbolum considère indissociables dans la conception d'une offre réussie.</p>
+      <p><strong>Fantasmes</strong> — l'offre comme réponse à un désir latent plutôt qu'à un besoin déclaré. <strong>Polymorphie</strong> — une même intention peut se matérialiser sous des formes radicalement différentes selon le signifiant choisi. <strong>Créativité</strong> — la liberté des moyens, toujours au service de la fonction stratégique confiée à l'offre.</p>
+      <div class="theme-tags">
+        <span class="theme-tag">Fantasmes</span>
+        <span class="theme-tag">Polymorphie de l'offre</span>
+        <span class="theme-tag">Créativité</span>
+      </div>
+    </div>
+  </section>
+
+  <!--
+    ===== Les 10 pièces de l'exposition =====
+    Pour chaque carte : dépose ta photo dans /images/exposition/ sous le nom indiqué
+    (offre-01.jpg à offre-10.jpg), puis remplace le titre et le texte.
+    Tant qu'une photo n'est pas présente, un fond neutre "Photo à venir" s'affiche à sa place.
+  -->
+  <section id="expo-cards">
+    <div class="wrap">
+      <div class="cards-grid">
+
+        <div class="offer-card">
+          <div class="card-media">
+            <img src="offre-01.jpg" alt="Offre 01" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback">Photo à venir</div>
+          </div>
+          <div class="offer-body">
+            <span class="offer-number">Pièce 01</span>
+            <h3>Mini-Frijidè - Une glacière-réfrigératrice</h3>
+            <p>Non seulement cette offre répond à un besoin fondamental dans un contexte économique précis, l'encadrement fantasmatique de cette offre repose sur une accessibilité inattendue et une combinaison très originale.</p>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="card-media">
+            <img src="offre-02.jpg" alt="Offre 02" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback">Photo à venir</div>
+          </div>
+          <div class="offer-body">
+            <span class="offer-number">Pièce 02</span>
+            <h3>TOK509</h3>
+            <p>Une quantité considérable de jeunes haïtiens sur les réseaux sociaux veulent être rémunérés pour leurs contenus. L'initiative TOK509 matérialise ce désir en un système de paiement en gourdes.</p>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="card-media">
+            <img src="offre-03.jpg" alt="Offre 03" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback">Photo à venir</div>
+          </div>
+          <div class="offer-body">
+            <span class="offer-number">Pièce 03</span>
+            <h3>FIERTÉ - Maison de mode</h3>
+            <p>Comment exploiter le besoin d'appartenance patriote des Haïtiens ? Une marque de mode axé sur l'identité nationale, une esthétique de qualité et l'accessibilité au plus grand nombre est une proposition intéressante.</p>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="card-media">
+            <img src="offre-04.jpg" alt="Offre 04" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback">Photo à venir</div>
+          </div>
+          <div class="offer-body">
+            <span class="offer-number">Pièce 04</span>
+            <h3>Festival des amoureux - 14 février</h3>
+            <p>L'amour est l'un des désirs les plus puissants chez l'être humain. Le Festival des amoureux organisé tous les 14 février donne un espace d'expression à ce sentiment en exploitant tout le champ symbolique autour de cette date.</p>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="card-media">
+            <img src="offre-05.jpg" alt="Offre 05" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback">Photo à venir</div>
+          </div>
+          <div class="offer-body">
+            <span class="offer-number">Pièce 05</span>
+            <h3>Goût Naturel</h3>
+            <p>Face à la peur ou au mépris des jus industriels, Goût Naturel propose non pas des jus naturels simples, mais des recettes complexes de jus naturels et frais préparés sur place.</p>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="card-media">
+            <img src="offre-06.jpg" alt="Offre 06" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback">Photo à venir</div>
+          </div>
+          <div class="offer-body">
+            <span class="offer-number">Pièce 06</span>
+            <h3>Football Money Drop</h3>
+            <p>Inspiré des célèbres émissions Money Drop, Football Money Drop est une offre pertinente dans l'univers de l'économie liée au football en Haïti, tout en considérant que c'est le jeu le plus populaire dans le pays, donc le plus exploitable commercialement.</p>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="card-media">
+            <img src="offre-07.jpg" alt="Offre 07" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback">Photo à venir</div>
+          </div>
+          <div class="offer-body">
+            <span class="offer-number">Pièce 07</span>
+            <h3>Musée immersif de la musique</h3>
+            <p>Comment redonner à la musique ses dimensions contemplatives, élitistes et historiques ? La conception d'un musée immersif de la musique offre un espace d'intimité et d'appréciation esthétique profonde.</p>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="card-media">
+            <img src="offre-08.jpg" alt="Offre 08" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback">Photo à venir</div>
+          </div>
+          <div class="offer-body">
+            <span class="offer-number">Pièce 08</span>
+            <h3>Coca-Cola Bio - Coca-Cola Shake</h3>
+            <p>Nous avions imaginé comment nous pourrions créer de nouvelles offres pour Coca-Cola. Face aux tendances écologiques de ces dernières années, Coca-Cola Bio se repositionne dans les dynamismes sociaux. Coca-Cola Shake combine deux expériences gustatives très appréciées à une seule offre.</p>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="card-media">
+            <img src="offre-09.jpg" alt="Offre 09" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback">Photo à venir</div>
+          </div>
+          <div class="offer-body">
+            <span class="offer-number">Pièce 09</span>
+            <h3>Celebrity World Cup</h3>
+            <p>Imaginez simplement Drake représentant les USA qui affronte Justin Bieber représentant le Canada dans une finale de Coupe du Monde. Ce concept se rattache aux fantasmes liés aux célébrités et répond à une simple question : comment radicaliser ces fantasmes ?</p>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="card-media">
+            <img src="offre-10.jpg" alt="Offre 10" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="media-fallback">Photo à venir</div>
+          </div>
+          <div class="offer-body">
+            <span class="offer-number">Pièce 10</span>
+            <h3>Kiyès kap jwenn Trezò a ?</h3>
+            <p>Et si un fantasme des enfants devenait un fantasme des adultes ?</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="expo-contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <p class="lead">Une offre vous intéresse ?</p>
+        <p>Contactez-nous si vous souhaitez acquérir l'une de ces offres, ou si vous voulez que nous en construisions une semblable pour votre organisation.</p>
+        <a class="email-link" href="mailto:cabinetsymbolum@gmail.com">cabinetsymbolum@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="expo-services">
+    <div class="wrap">
+      <p class="eyebrow">Nos services autour de cette initiative</p>
+      <h2>Deux façons de travailler avec nous sur vos offres.</h2>
+
+      <div class="service-row">
+        <h3>Amélioration des offres existantes</h3>
+        <p>Votre entreprise dispose déjà d'une offre, mais elle peine à convaincre ou à se différencier. Nous en faisons le diagnostic symbolique : quel fantasme elle prétend activer, lequel elle active réellement, et quel écart explique son manque de force. Nous reconstruisons ensuite l'offre — sa forme, son discours, ses signifiants — pour qu'elle signifie ce qu'elle doit signifier.</p>
+      </div>
+      <div class="service-row">
+        <h3>Partenariat pour les expositions</h3>
+        <p>Votre organisation souhaite présenter ses offres ou ses produits selon cette même logique d'exposition ? Nous concevons avec vous une exposition sur mesure — sélection des pièces, mise en scène symbolique, discours d'accompagnement — pour donner à votre catalogue la force d'une collection plutôt que celle d'une simple liste.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <span class="logo-symbol">∫</span>
+      <span class="logo-text">Cabinet Symbolum</span>
+    </a>
+    <p class="foot-tagline">Expert en communication symbolique.</p>
+    <nav>
+      <a href="services.html">Nos services</a><span class="sep">·</span>
+      <a href="identite.html">Notre identité</a><span class="sep">·</span>
+      <a href="methodologie.html">Notre méthodologie</a><span class="sep">·</span>
+      <a href="revue.html">Revue Symbolum</a><span class="sep">·</span>
+      <a href="etudes-de-cas.html">Études de cas</a><span class="sep">·</span>
+      <a href="exposition-fantasmes.html">Exposition</a><span class="sep">·</span>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="legal-row">
+      <a href="mentions-legales.html">Mentions légales</a><span class="sep">·</span>
+      <a href="politique-confidentialite.html">Politique de confidentialité</a><span class="sep">·</span>
+      <a href="politiques-institutionnelles.html">Politiques institutionnelles</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn = document.getElementById('menu-btn');
+    var panel = document.getElementById('nav-panel');
+    var closeBtn = document.getElementById('nav-close');
+    function closeMenu(){
+      panel.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    }
+    btn.addEventListener('click', function(){
+      var isOpen = panel.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    closeBtn.addEventListener('click', closeMenu);
+    panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  })();
+</script>
+
+</body>
+</html>

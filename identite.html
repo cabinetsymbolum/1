@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notre identité — Cabinet Symbolum</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --bg:#E6D6C4;
+  --blue:#001C5D;
+  --black:#000000;
+  --white:#FFFFFF;
+
+  --radius:14px;
+  --radius-lg:22px;
+
+  --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+
+  --max:1180px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--black);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{
+  color:inherit;
+}
+
+.wrap{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 6vw;
+}
+
+/* ================= LOGO ================= */
+
+.logo{
+  display:inline-flex;
+  align-items:center;
+  gap:1rem;
+  text-decoration:none;
+}
+
+.logo-symbol{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:600;
+  color:var(--blue);
+  font-size:1.7rem;
+  line-height:1;
+}
+
+.logo-text{
+  font-family:var(--serif);
+  font-weight:500;
+  color:var(--blue);
+  font-size:.82rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:500;
+
+  background:rgba(230,214,196,.92);
+  backdrop-filter:blur(6px);
+
+  border-bottom:1px solid rgba(0,28,93,.12);
+}
+
+header .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding-top:1.1rem;
+  padding-bottom:1.1rem;
+}
+
+/* ================= HOME ================= */
+
+.home-link{
+  width:32px;
+  height:32px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:var(--blue);
+  text-decoration:none;
+
+  transition:opacity .2s ease;
+}
+
+.home-link:hover{
+  opacity:.65;
+}
+
+.home-icon{
+  width:22px;
+  height:22px;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+  padding:6.5rem 0;
+}
+
+.eyebrow{
+  font-family:var(--serif);
+  font-size:.85rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+
+  margin:0 0 1.1rem;
+}
+
+h1,
+h2,
+h3{
+  font-family:var(--serif);
+  font-weight:500;
+  margin:0;
+}
+
+p{
+  margin:0;
+}
+
+/* ================= HERO ================= */
+
+#hero{
+  background:var(--blue);
+  color:var(--white);
+}
+
+#hero .eyebrow{
+  color:#AEB9D9;
+}
+
+#hero h1{
+  font-size:clamp(2.6rem,6vw,4.5rem);
+  line-height:1.05;
+
+  max-width:14ch;
+
+  margin-bottom:1.8rem;
+}
+
+#hero .subtitle{
+  font-family:var(--serif);
+  font-size:clamp(1.4rem,3vw,2rem);
+  line-height:1.25;
+
+  max-width:32ch;
+
+  color:#DCE1EF;
+}
+
+/* ================= IDENTITÉ ================= */
+
+#identite{
+  background:var(--bg);
+}
+
+.content{
+  max-width:70ch;
+}
+
+.content p{
+  font-size:1.02rem;
+}
+
+.content p + p{
+  margin-top:1.5rem;
+}
+
+.quote{
+  margin:3rem 0;
+
+  padding:2rem 2.2rem;
+
+  border-left:2px solid var(--blue);
+
+  background:rgba(255,255,255,.32);
+}
+
+.quote p{
+  font-family:var(--serif);
+  font-style:italic;
+
+  font-size:clamp(1.5rem,3vw,2.1rem);
+
+  line-height:1.2;
+
+  color:var(--blue);
+}
+
+/* ================= CONCEPTION ================= */
+
+#conception{
+  background:var(--white);
+}
+
+#conception .eyebrow{
+  color:var(--blue);
+}
+
+.section-title{
+  color:var(--blue);
+
+  font-size:clamp(2rem,4vw,2.8rem);
+  line-height:1.1;
+
+  margin-bottom:2.2rem;
+}
+
+.architecture{
+  margin-top:3rem;
+
+  padding:2rem 0;
+
+  border-top:1px solid rgba(0,28,93,.35);
+  border-bottom:1px solid rgba(0,28,93,.35);
+}
+
+.architecture-chain{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+
+  gap:.35rem .65rem;
+}
+
+.architecture-chain span{
+  font-family:var(--serif);
+  color:var(--blue);
+
+  font-size:clamp(1.05rem,2vw,1.45rem);
+}
+
+.architecture-chain .arrow{
+  font-family:var(--sans);
+  opacity:.5;
+}
+
+/* ================= SYMBOLIQUE ================= */
+
+#symbolique{
+  background:var(--bg);
+}
+
+#symbolique .eyebrow{
+  color:var(--blue);
+}
+
+.symbolique-definition{
+  font-family:var(--serif);
+
+  font-size:clamp(1.5rem,3vw,2.1rem);
+
+  line-height:1.25;
+
+  color:var(--blue);
+
+  max-width:32ch;
+
+  margin-bottom:2.5rem;
+}
+
+.signifiers{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+
+  border-top:1px solid rgba(0,28,93,.3);
+}
+
+.signifier{
+  padding:1rem 0;
+
+  border-bottom:1px solid rgba(0,28,93,.3);
+
+  font-family:var(--serif);
+  font-size:1.2rem;
+
+  color:var(--blue);
+}
+
+.signifier:nth-child(odd){
+  border-right:1px solid rgba(0,28,93,.3);
+  padding-right:1.5rem;
+}
+
+.signifier:nth-child(even){
+  padding-left:1.5rem;
+}
+
+/* ================= MARKETING ================= */
+
+#marketing{
+  background:var(--blue);
+  color:var(--white);
+
+  padding:8rem 0;
+}
+
+#marketing .eyebrow{
+  color:#AEB9D9;
+}
+
+#marketing h2{
+  font-size:clamp(2.3rem,5vw,3.6rem);
+  line-height:1.05;
+
+  max-width:15ch;
+
+  margin-bottom:2.5rem;
+}
+
+.marketing-intro{
+  max-width:68ch;
+
+  font-size:1.08rem;
+
+  color:#DCE1EF;
+}
+
+.marketing-intro p + p{
+  margin-top:1.5rem;
+}
+
+.marketing-chain{
+  margin-top:4rem;
+
+  padding:2.2rem 0;
+
+  border-top:1px solid rgba(255,255,255,.3);
+  border-bottom:1px solid rgba(255,255,255,.3);
+
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+
+  gap:.4rem .7rem;
+}
+
+.marketing-chain span{
+  font-family:var(--serif);
+
+  font-size:clamp(1.15rem,2.4vw,1.65rem);
+
+  color:var(--white);
+}
+
+.marketing-chain .arrow{
+  font-family:var(--sans);
+  color:#AEB9D9;
+  font-size:.9rem;
+}
+
+.marketing-conclusion{
+  max-width:68ch;
+
+  margin-top:2.5rem;
+
+  font-family:var(--serif);
+
+  font-size:clamp(1.35rem,2.5vw,1.8rem);
+
+  line-height:1.3;
+
+  color:var(--white);
+}
+
+/* ================= PENSÉE ================= */
+
+#pensee{
+  background:var(--white);
+}
+
+#pensee .eyebrow{
+  color:var(--blue);
+}
+
+.question{
+  margin-top:2.5rem;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  border-top:1px solid rgba(0,28,93,.3);
+  border-bottom:1px solid rgba(0,28,93,.3);
+}
+
+.question-block{
+  padding:2rem;
+
+  font-family:var(--serif);
+
+  font-size:1.45rem;
+
+  line-height:1.25;
+}
+
+.question-block:first-child{
+  border-right:1px solid rgba(0,28,93,.3);
+  color:#555;
+}
+
+.question-block:last-child{
+  color:var(--blue);
+}
+
+.fields{
+  margin-top:2.5rem;
+
+  font-family:var(--serif);
+
+  font-size:1.1rem;
+
+  color:var(--blue);
+}
+
+/* ================= EXCELLENCE ================= */
+
+#excellence{
+  background:var(--bg);
+}
+
+#excellence .eyebrow{
+  color:var(--blue);
+}
+
+.excellence-text{
+  max-width:68ch;
+}
+
+.standards{
+  margin:2.8rem 0;
+
+  padding:1.4rem 0;
+
+  border-top:1px solid rgba(0,28,93,.35);
+  border-bottom:1px solid rgba(0,28,93,.35);
+
+  font-family:var(--serif);
+
+  color:var(--blue);
+
+  font-size:1.15rem;
+}
+
+.method-chain{
+  margin-top:2.8rem;
+
+  padding:2rem 0;
+
+  border-top:1px solid rgba(0,28,93,.35);
+  border-bottom:1px solid rgba(0,28,93,.35);
+
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+
+  gap:.4rem .65rem;
+}
+
+.method-chain span{
+  font-family:var(--serif);
+
+  color:var(--blue);
+
+  font-size:clamp(1.05rem,2vw,1.4rem);
+}
+
+.method-chain .arrow{
+  font-family:var(--sans);
+  opacity:.5;
+}
+
+/* ================= POSITION ================= */
+
+#position{
+  background:var(--white);
+}
+
+#position .eyebrow{
+  color:var(--blue);
+}
+
+.intersection{
+  margin-top:2.8rem;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  border-top:1px solid rgba(0,28,93,.3);
+  border-bottom:1px solid rgba(0,28,93,.3);
+}
+
+.intersection span{
+  padding:1.7rem;
+
+  text-align:center;
+
+  font-family:var(--serif);
+
+  font-size:1.35rem;
+
+  color:var(--blue);
+
+  border-right:1px solid rgba(0,28,93,.3);
+}
+
+.intersection span:nth-child(3n){
+  border-right:none;
+}
+
+.position-question{
+  max-width:70ch;
+
+  margin-top:3.5rem;
+}
+
+.position-question .main-question{
+  font-family:var(--serif);
+
+  font-style:italic;
+
+  font-size:clamp(1.5rem,3vw,2.2rem);
+
+  line-height:1.25;
+
+  color:var(--blue);
+}
+
+.position-question p + p{
+  margin-top:1.7rem;
+}
+
+.final{
+  margin-top:4rem;
+
+  padding-top:2.5rem;
+
+  border-top:1px solid rgba(0,28,93,.25);
+
+  text-align:center;
+}
+
+.final-title{
+  font-family:var(--serif);
+
+  font-size:clamp(1.7rem,3.5vw,2.5rem);
+
+  color:var(--blue);
+}
+
+.final-name{
+  margin-top:1.2rem;
+
+  font-family:var(--serif);
+
+  font-size:1.2rem;
+
+  color:var(--blue);
+}
+
+.final-tagline{
+  margin-top:.3rem;
+
+  font-family:var(--serif);
+
+  font-style:italic;
+
+  color:var(--blue);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:var(--blue);
+  color:var(--white);
+
+  padding:3.5rem 0 2.2rem;
+}
+
+footer .logo-symbol,
+footer .logo-text{
+  color:var(--white);
+}
+
+footer .foot-tagline{
+  font-size:.95rem;
+  color:#C7D0E8;
+
+  margin-top:.5rem;
+}
+
+footer nav{
+  margin-top:2rem;
+
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:.5rem .9rem;
+
+  font-size:.88rem;
+}
+
+footer nav a{
+  text-decoration:none;
+  color:#DCE1EF;
+}
+
+footer nav a:hover{
+  color:var(--white);
+}
+
+footer nav span.sep{
+  color:#5A6994;
+}
+
+.legal-row{
+  margin-top:2.4rem;
+
+  padding-top:1.6rem;
+
+  border-top:1px solid rgba(255,255,255,.15);
+
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:.5rem .9rem;
+
+  font-size:.78rem;
+
+  color:#93A0C8;
+}
+
+.legal-row a{
+  text-decoration:none;
+  color:#93A0C8;
+}
+
+.legal-row a:hover{
+  color:var(--white);
+}
+
+.legal-row span.sep{
+  color:#4A578A;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:767px){
+
+  .wrap{
+    padding:0 5.5vw;
+  }
+
+  section{
+    padding:4.5rem 0;
+  }
+
+  #marketing{
+    padding:5.5rem 0;
+  }
+
+  .architecture-chain,
+  .marketing-chain,
+  .method-chain{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .architecture-chain .arrow,
+  .marketing-chain .arrow,
+  .method-chain .arrow{
+    transform:rotate(90deg);
+    margin-left:.3rem;
+  }
+
+  .signifiers{
+    grid-template-columns:1fr;
+  }
+
+  .signifier:nth-child(odd){
+    border-right:none;
+    padding-right:0;
+  }
+
+  .signifier:nth-child(even){
+    padding-left:0;
+  }
+
+  .question{
+    grid-template-columns:1fr;
+  }
+
+  .question-block:first-child{
+    border-right:none;
+    border-bottom:1px solid rgba(0,28,93,.3);
+  }
+
+  .intersection{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .intersection span{
+    font-size:1.15rem;
+    padding:1.2rem;
+  }
+
+  .intersection span:nth-child(3n){
+    border-right:1px solid rgba(0,28,93,.3);
+  }
+
+  .intersection span:nth-child(2n){
+    border-right:none;
+  }
+
+  #hero h1{
+    font-size:clamp(2.6rem,12vw,4.2rem);
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+  <div class="wrap">
+
+    <a href="index.html" class="logo">
+
+      <span class="logo-symbol">∫</span>
+
+      <span class="logo-text">
+        Cabinet Symbolum
+      </span>
+
+    </a>
+
+
+    <a
+      href="index.html"
+      class="home-link"
+      aria-label="Retour à l'accueil"
+      title="Accueil">
+
+      <!-- Icône Home -->
+      <svg
+        class="home-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true">
+
+        <path d="M3 10.5L12 3l9 7.5"></path>
+        <path d="M5.5 9.5V21h13V9.5"></path>
+        <path d="M9.5 21v-6.5h5V21"></path>
+
+      </svg>
+
+    </a>
+
+  </div>
+
+</header>
+
+
+<main>
+
+
+<!-- ================= HERO ================= -->
+
+<section id="hero">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      Notre identité
+    </p>
+
+    <h1>
+      Cabinet Symbolum
+    </h1>
+
+    <p class="subtitle">
+      Cabinet d’excellence en stratégie et communication symbolique
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= IDENTITÉ ================= -->
+
+<section id="identite">
+
+  <div class="wrap">
+
+    <div class="content">
+
+      <p class="eyebrow">
+        Cabinet Symbolum
+      </p>
+
+      <p>
+        Symbolum est un cabinet de conseil intellectuel et stratégique
+        spécialisé dans la compréhension, la construction et la transformation
+        des positions symboliques.
+      </p>
+
+      <p>
+        Nous accompagnons les organisations, les institutions, les entreprises,
+        les personnalités, les projets et les œuvres dans la manière dont ils
+        sont signifiés, perçus et reconnus.
+      </p>
+
+      <div class="quote">
+
+        <p>
+          « Une organisation n’existe pas seulement par ce qu’elle fait.
+          Elle existe aussi par ce qu’elle signifie. »
+        </p>
+
+      </div>
+
+      <p>
+        Notre travail consiste à comprendre cette signification, à identifier
+        ce qui la produit et à construire les conditions permettant de la
+        transformer.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CONCEPTION ================= -->
+
+<section id="conception">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      Notre conception
+    </p>
+
+    <h2 class="section-title">
+      La communication comme architecture
+    </h2>
+
+    <div class="content">
+
+      <p>
+        Pour Symbolum, la communication ne se réduit pas à la transmission
+        d'un message.
+      </p>
+
+      <p>
+        Une identité se construit à travers des discours, des images, des
+        comportements, des pratiques, des rituels, des expériences et des
+        preuves.
+      </p>
+
+    </div>
+
+    <div class="architecture">
+
+      <div class="architecture-chain">
+
+        <span>IDENTITÉ</span>
+        <span class="arrow">→</span>
+
+        <span>SIGNIFICATION</span>
+        <span class="arrow">→</span>
+
+        <span>SIGNIFIANTS</span>
+        <span class="arrow">→</span>
+
+        <span>COMPORTEMENTS</span>
+        <span class="arrow">→</span>
+
+        <span>PREUVES</span>
+        <span class="arrow">→</span>
+
+        <span>EXPÉRIENCE</span>
+        <span class="arrow">→</span>
+
+        <span>RÉCEPTION</span>
+        <span class="arrow">→</span>
+
+        <span>RECONNAISSANCE</span>
+
+      </div>
+
+    </div>
+
+    <div class="content" style="margin-top:2rem;">
+
+      <p>
+        Ce qui est dit n'est donc qu'une partie de ce qui est communiqué.
+        Notre approche cherche à comprendre l'ensemble du système.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SYMBOLIQUE ================= -->
+
+<section id="symbolique">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      Le symbolique
+    </p>
+
+    <p class="symbolique-definition">
+      Le symbolique désigne l'ensemble des significations à travers lesquelles
+      une organisation, une personne ou un projet prend place dans l'espace
+      social.
+    </p>
+
+    <div class="content">
+
+      <p>
+        Un nom, une couleur, une forme, une parole, un geste, une architecture,
+        un rituel, une pratique ou une réputation peuvent devenir des
+        signifiants.
+      </p>
+
+      <div class="signifiers">
+
+        <div class="signifier">Nom</div>
+        <div class="signifier">Couleur</div>
+        <div class="signifier">Forme</div>
+        <div class="signifier">Parole</div>
+        <div class="signifier">Geste</div>
+        <div class="signifier">Architecture</div>
+        <div class="signifier">Rituel</div>
+        <div class="signifier">Pratique</div>
+        <div class="signifier">Réputation</div>
+        <div class="signifier">Représentation</div>
+
+      </div>
+
+      <p style="margin-top:2rem;">
+        Ces signifiants ne fonctionnent jamais isolément. Ils prennent leur
+        valeur dans les relations qu'ils entretiennent avec d'autres
+        signifiants, avec les pratiques et avec les représentations sociales.
+      </p>
+
+      <p>
+        Symbolum analyse ces relations afin de comprendre quelle position
+        symbolique existe, comment elle s'est constituée et comment elle peut
+        être transformée.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MARKETING ================= -->
+
+<section id="marketing">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      Notre approche marketing
+    </p>
+
+    <h2>
+      Comprendre le désir pour transformer l'offre.
+    </h2>
+
+    <div class="marketing-intro">
+
+      <p>
+        Notre approche dépasse le marketing classique centré sur
+        l’identification des besoins. Nous cherchons à comprendre les
+        fantasmes sociaux et les désirs qui donnent sens à ces besoins,
+        afin d’imaginer des offres capables d’y répondre autrement.
+      </p>
+
+      <p>
+        Notre démarche consiste à analyser le champ symbolique, comprendre
+        les désirs et fantasmes qui le traversent, étudier les formes d’offres
+        qui cherchent déjà à y répondre, puis identifier leurs limites,
+        leurs fragmentations ou leurs conventions.
+      </p>
+
+      <p>
+        À partir de cette analyse, nous cherchons à radicaliser la forme de
+        l’offre : proposer une réponse plus cohérente, plus complète, plus
+        singulière ou simplement différente à un désir déjà présent dans la
+        société.
+      </p>
+
+    </div>
+
+    <div class="marketing-chain">
+
+      <span>CHAMP SYMBOLIQUE</span>
+
+      <span class="arrow">→</span>
+
+      <span>FANTASMES &amp; DÉSIRS</span>
+
+      <span class="arrow">→</span>
+
+      <span>OFFRES EXISTANTES</span>
+
+      <span class="arrow">→</span>
+
+      <span>CONTRADICTIONS &amp; OPPORTUNITÉS</span>
+
+      <span class="arrow">→</span>
+
+      <span>NOUVELLE FORME D’OFFRE</span>
+
+    </div>
+
+    <p class="marketing-conclusion">
+      Le marketing devient ainsi un travail de compréhension du désir social
+      et de conception de formes capables de lui donner une réponse nouvelle.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MÉTHODE DE PENSÉE ================= -->
+
+<section id="pensee">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      Notre méthode de pensée
+    </p>
+
+    <h2 class="section-title">
+      Nous cherchons à comprendre avant de prescrire.
+    </h2>
+
+    <div class="question">
+
+      <div class="question-block">
+        « Que devons-nous communiquer ? »
+      </div>
+
+      <div class="question-block">
+        « Où sommes-nous symboliquement, comment sommes-nous reconnus et
+        quelle transformation voulons-nous rendre possible ? »
+      </div>
+
+    </div>
+
+    <div class="content" style="margin-top:2.5rem;">
+
+      <p>
+        Notre réflexion mobilise notamment la psychanalyse, la sémiotique,
+        la linguistique, la philosophie, la sociologie, l'analyse culturelle,
+        les sciences de la communication et la stratégie.
+      </p>
+
+      <p>
+        La théorie n'est pas pour nous une décoration intellectuelle.
+        Elle est un instrument pour observer, distinguer, comprendre et
+        décider.
+      </p>
+
+      <p class="fields">
+        Psychanalyse · Sémiotique · Linguistique · Philosophie · Sociologie ·
+        Analyse culturelle · Sciences de la communication · Stratégie
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= EXCELLENCE ================= -->
+
+<section id="excellence">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      Notre conception de l'excellence
+    </p>
+
+    <h2 class="section-title">
+      Transformer la connaissance en jugement.
+    </h2>
+
+    <div class="excellence-text">
+
+      <p>
+        L'excellence chez Symbolum est la recherche d'une certaine perfection
+        dans la forme et dans le fond, suivant des standards explicites.
+      </p>
+
+      <div class="standards">
+        RIGUEUR · PERTINENCE · COHÉRENCE · QUALITÉ ·
+        JUSTIFIABILITÉ · CONTRÔLE · PERFECTIONNEMENT
+      </div>
+
+      <p>
+        Notre expertise ne réside donc pas uniquement dans l'accumulation de
+        connaissances.
+      </p>
+
+      <p style="margin-top:1.5rem;">
+        Elle réside dans la capacité à transformer la connaissance en
+        jugement :
+      </p>
+
+      <div class="method-chain">
+
+        <span>OBSERVER</span>
+        <span class="arrow">→</span>
+
+        <span>DISTINGUER</span>
+        <span class="arrow">→</span>
+
+        <span>ANALYSER</span>
+        <span class="arrow">→</span>
+
+        <span>INTERPRÉTER</span>
+        <span class="arrow">→</span>
+
+        <span>DÉCIDER</span>
+        <span class="arrow">→</span>
+
+        <span>CONSTRUIRE</span>
+        <span class="arrow">→</span>
+
+        <span>CONTRÔLER</span>
+        <span class="arrow">→</span>
+
+        <span>APPRENDRE</span>
+
+      </div>
+
+      <p style="margin-top:2rem;">
+        Nous distinguons les faits, les interprétations, les hypothèses et
+        les opinions.
+      </p>
+
+      <p style="margin-top:1.5rem;">
+        Nous ne cherchons pas à paraître certains. Nous cherchons à être
+        justes dans le degré de certitude que nous accordons à nos
+        conclusions.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= POSITION ================= -->
+
+<section id="position">
+
+  <div class="wrap">
+
+    <p class="eyebrow">
+      Notre position
+    </p>
+
+    <div class="content">
+
+      <p>
+        Symbolum n'est ni simplement une agence de communication, ni
+        uniquement un cabinet de stratégie classique.
+      </p>
+
+      <p>
+        Nous nous situons à l'intersection de :
+      </p>
+
+    </div>
+
+    <div class="intersection">
+
+      <span>RECHERCHE</span>
+      <span>ANALYSE</span>
+      <span>STRATÉGIE</span>
+
+      <span>COMMUNICATION</span>
+      <span>CULTURE</span>
+      <span>CRÉATION</span>
+
+    </div>
+
+    <div class="position-question">
+
+      <p class="main-question">
+        « Comment une entité acquiert-elle, conserve-t-elle ou transforme-t-elle
+        une position symbolique dans l'espace social ? »
+      </p>
+
+      <p>
+        Nous cherchons à transformer cette compréhension en stratégie, puis
+        la stratégie en pratiques, en preuves et en reconnaissance.
+      </p>
+
+    </div>
+
+    <div class="final">
+
+      <div class="final-title">
+        Comprendre. Construire. Transformer.
+      </div>
+
+      <div class="final-name">
+        Cabinet Symbolum
+      </div>
+
+      <div class="final-tagline">
+        Faites-vous désirer.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="wrap">
+
+    <a href="index.html" class="logo">
+
+      <span class="logo-symbol">∫</span>
+
+      <span class="logo-text">
+        Cabinet Symbolum
+      </span>
+
+    </a>
+
+    <p class="foot-tagline">
+      Expert en communication symbolique.
+    </p>
+
+    <nav>
+
+      <a href="services.html">Nos services</a>
+      <span class="sep">·</span>
+
+      <a href="produits.html">Nos produits</a>
+      <span class="sep">·</span>
+
+      <a href="identite.html">Notre identité</a>
+      <span class="sep">·</span>
+
+      <a href="methodologie.html">Notre méthodologie</a>
+      <span class="sep">·</span>
+
+      <a href="revue.html">Revue Symbolum</a>
+      <span class="sep">·</span>
+
+      <a href="etudes-de-cas.html">Études de cas</a>
+      <span class="sep">·</span>
+
+      <a href="index.html#contact">Contact</a>
+
+    </nav>
+
+    <div class="legal-row">
+
+      <a href="mentions-legales.html">
+        Mentions légales
+      </a>
+
+      <span class="sep">·</span>
+
+      <a href="politique-confidentialite.html">
+        Politique de confidentialité
+      </a>
+
+      <span class="sep">·</span>
+
+      <a href="politiques-institutionnelles.html">
+        Politiques institutionnelles
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
